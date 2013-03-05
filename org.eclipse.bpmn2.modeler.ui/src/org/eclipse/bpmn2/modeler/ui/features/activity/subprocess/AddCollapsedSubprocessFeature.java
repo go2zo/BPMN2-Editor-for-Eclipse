@@ -22,6 +22,7 @@ import org.eclipse.graphiti.mm.algorithms.MultiText;
 import org.eclipse.graphiti.mm.algorithms.Polyline;
 import org.eclipse.graphiti.mm.algorithms.Rectangle;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
+import org.eclipse.graphiti.mm.algorithms.styles.Font;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.ChopboxAnchor;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
@@ -84,7 +85,9 @@ public class AddCollapsedSubprocessFeature extends AbstractAddFeature {
 		text.setStyle(StyleUtil.getStyleForText(getDiagram()));
 		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
 		text.setVerticalAlignment(Orientation.ALIGNMENT_TOP);
-		text.getFont().setBold(true);
+		Font font = text.getFont();
+		text.setFont(gaService.manageFont(getDiagram(), font.getName(), font.getSize(), font.isItalic(), true));
+//		text.getFont().setBold(true);
 		link(textShape, subprocess);
 
 		Polyline lineHorizontal = gaService.createPolyline(box, new int[] { 2, 10, 18, 10 });

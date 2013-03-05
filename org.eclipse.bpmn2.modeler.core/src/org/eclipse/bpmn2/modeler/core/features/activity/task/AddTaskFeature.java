@@ -19,6 +19,7 @@ import org.eclipse.bpmn2.modeler.core.utils.StyleUtil;
 import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.mm.algorithms.MultiText;
+import org.eclipse.graphiti.mm.algorithms.styles.Font;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.Shape;
@@ -50,7 +51,9 @@ public class AddTaskFeature extends AbstractAddActivityFeature {
 		text.setStyle(StyleUtil.getStyleForText(getDiagram()));
 		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
 		text.setVerticalAlignment(Orientation.ALIGNMENT_TOP);
-		text.getFont().setBold(true);
+		Font font = text.getFont();
+		text.setFont(gaService.manageFont(getDiagram(), font.getName(), font.getSize(), font.isItalic(), true));
+//		text.getFont().setBold(true);
 		link(textShape, activity);
 	}
 

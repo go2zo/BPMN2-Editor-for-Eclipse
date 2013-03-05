@@ -37,6 +37,7 @@ import org.eclipse.graphiti.features.IFeatureProvider;
 import org.eclipse.graphiti.features.context.IAddContext;
 import org.eclipse.graphiti.mm.algorithms.RoundedRectangle;
 import org.eclipse.graphiti.mm.algorithms.Text;
+import org.eclipse.graphiti.mm.algorithms.styles.Font;
 import org.eclipse.graphiti.mm.algorithms.styles.Orientation;
 import org.eclipse.graphiti.mm.pictograms.ContainerShape;
 import org.eclipse.graphiti.mm.pictograms.PictogramElement;
@@ -84,7 +85,9 @@ public class ChoreographyAddFeature extends AbstractBpmnAddFeature {
 		text.setStyle(StyleUtil.getStyleForText(getDiagram()));
 		text.setHorizontalAlignment(Orientation.ALIGNMENT_CENTER);
 		text.setVerticalAlignment(Orientation.ALIGNMENT_TOP);
-		text.getFont().setBold(false);
+		Font font = text.getFont();
+		text.setFont(gaService.manageFont(getDiagram(), font.getName(), font.getSize(), font.isItalic(), true));
+//		text.getFont().setBold(false);
 		setTextLocation(choreographyContainer, text, width, height);
 		peService.setPropertyValue(nameShape, ChoreographyProperties.CHOREOGRAPHY_NAME, Boolean.toString(true));
 

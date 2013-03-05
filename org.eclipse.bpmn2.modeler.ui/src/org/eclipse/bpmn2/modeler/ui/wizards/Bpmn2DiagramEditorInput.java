@@ -21,7 +21,7 @@ final class Bpmn2DiagramEditorInput extends DiagramEditorInput {
 	private final TransactionalEditingDomain domain;
 
 	Bpmn2DiagramEditorInput(URI diagramUri, TransactionalEditingDomain domain, String providerId) {
-		super(diagramUri, domain, providerId);
+		super(diagramUri, providerId);
 		this.domain = domain;
 	}
 
